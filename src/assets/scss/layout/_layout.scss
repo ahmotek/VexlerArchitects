@@ -1,0 +1,138 @@
+@import '../base-variables/settings';
+@import '../base-variables/custom-settings';
+@import '../base-variables/layout-sizes';
+@import '../base-variables/brandcolors';
+
+body {
+  position : relative;
+
+  &.nav-open {
+    overflow : hidden;
+
+    @include breakpoint(medium-small) {
+      overflow : visible;
+    }
+  }
+}
+
+.main {
+  margin-top : map-get($header-height, small);
+
+  @include breakpoint(xlarge) {
+    margin-top : map-get($header-height, xlarge);
+  }
+}
+
+.container {
+  height : 100%;
+  @include grid-row;
+  @include column-gutters($gutter-sizes);
+
+  .header & {
+    display   : flex;
+    flex-flow : row wrap;
+    //justify-content: flex-start | flex-end | center | space-between | space-around;
+    //align-items: flex-start;
+    //align-content: flex-start;
+  }
+
+  .hero + & {
+    padding-top      : map-get($header-height, small) + $global-padding;
+    background-color : $body-background;
+
+    @include breakpoint(xlarge) {
+      padding-top : map-get($header-height, xlarge) + $global-padding;
+    }
+
+    @include breakpoint(xxxlarge) {
+      max-width     : none;
+      padding-left  : calc((100vw - #{$global-width - map-get($gutter-sizes, xlarge)*2}) / 2);
+      padding-right : calc((100vw - #{$global-width - map-get($gutter-sizes, xlarge)*2}) / 2);
+    }
+  }
+}
+
+.section-container {
+  padding : $global-padding/2 0;
+
+  &.section-has-aside {
+    @include breakpoint(large) {
+      min-height : calc(100vh - #{map-get($header-height, small)});
+    }
+
+    @include breakpoint(xlarge) {
+      min-height : calc(100vh - #{map-get($header-height, xlarge)});
+    }
+  }
+}
+
+//- child of .section-container and sibling of .sidebar-container
+.content-wrapper {
+  width : 100%;
+
+  .about-page & {
+    max-width    : rem-calc(600);
+    margin-right : auto;
+    margin-left  : auto;
+  }
+
+  .section-has-aside & {
+    max-width : none;
+    margin    : 0;
+    padding   : 0;
+
+    @include breakpoint(large) {
+      float : right;
+      width : calc(100% - #{map-get($aside-width, medium) +  map-get($gutter-sizes, xlarge)});
+    }
+  }
+}
+
+//- child of .section-container and sibling of .content-container
+.sidebar {
+  &-wrapper {
+    @include breakpoint(large) {
+      float : left;
+      width : map-get($aside-width, medium);
+    }
+  }
+
+  &-container {
+    padding-bottom : $global-padding;
+
+  }
+
+  &-description {
+    @include breakpoint(medium-small) {
+      margin-bottom        : $global-margin;
+      -webkit-column-count : 2;
+      -moz-column-count    : 2;
+      column-count         : 2;
+      -webkit-column-width : calc(50% - #{map-get($gutter-sizes,xlarge)});
+      -moz-column-width    : calc(50% - #{map-get($gutter-sizes,xlarge)});
+      column-width         : calc(50% - #{map-get($gutter-sizes,xlarge)});
+      -webkit-column-gap   : #{map-get($gutter-sizes,xlarge)/2};
+      -moz-column-gap      : #{map-get($gutter-sizes,xlarge)/2};
+      column-gap           : #{map-get($gutter-sizes,xlarge)/2};
+
+      p {
+        display                     : inline-block;
+        margin-bottom               : rem-calc(24);
+        -webkit-column-break-inside : avoid;
+        page-break-inside           : avoid;
+        break-inside                : avoid;
+      }
+    }
+
+    @include breakpoint(large) {
+      -webkit-column-count : 1;
+      -moz-column-count    : 1;
+      column-count         : 1;
+
+      p {
+        display       : block;
+        margin-bottom : $global-margin;
+      }
+    }
+  }
+}

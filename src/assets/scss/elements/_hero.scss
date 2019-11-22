@@ -1,0 +1,132 @@
+@import '../base-variables/settings';
+@import '../base-variables/custom-settings';
+@import '../base-variables/layout-sizes';
+@import '../base-variables/brandcolors';
+
+.hero {
+  overflow : hidden;
+  position : relative;
+  height   : calc(100vh - #{map-get($header-height, small)});
+  z-index  : -1;
+
+  &.portrait {
+    &:before {
+      content          : '';
+      position         : absolute;
+      bottom           : 0;
+      width            : 100%;
+      left             : 0;
+      height           : calc(10vh + #{$ipad-topbar/2});
+      background-color : $body-background;
+      z-index          : 1;
+    }
+  }
+
+  @include breakpoint(xlarge) {
+    height : calc(100vh - #{map-get($header-height, xlarge)});
+  }
+
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+    height : calc(100vh - #{map-get($header-height, small) + $ipad-topbar});
+  }
+
+  &-image-container {
+    overflow  : hidden;
+    position  : fixed;
+    left      : 50%;
+    width     : 100%;
+    min-width : calc(100vw - #{map-get($gutter-sizes, small)*2});
+    height    : calc(100vh - #{map-get($header-height, small)});
+    transform : translateX(-50%);
+    z-index   : 0;
+
+    @include breakpoint(xlarge) {
+      min-width : calc(100vw - #{map-get($gutter-sizes, xlarge)*2});
+      height    : calc(100vh - #{map-get($header-height, xlarge)});
+    }
+  }
+
+  &-content {
+    position : absolute;
+    top      : 0;
+    width    : 100%;
+    height   : calc(100vh - #{map-get($header-height, small)});
+
+    @include breakpoint(xlarge) {
+      height : calc(100vh - #{map-get($header-height, xlarge)});
+    }
+
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+      height : calc(100vh - #{map-get($header-height, small) + $ipad-topbar});
+    }
+  }
+
+  &-quote {
+    position         : absolute;
+    bottom           : 0;
+    right            : map-get($gutter-sizes, small) + 2*($hero-arrow-width/3);
+    max-width        : none;
+    margin           : 0;
+    padding          : 4vw 6vw;
+    background-color : $body-background;
+    border           : 0 none;
+    z-index          : 1;
+
+    .portrait & {
+      bottom  : 6vh;
+      padding : 6vw 8vw;
+    }
+
+    @include breakpoint(small-small) {
+      padding : $global-padding*1.75 $global-padding*2.5;
+    }
+
+    @include breakpoint(medium-small) {
+      right : map-get($gutter-sizes, small) + $hero-arrow-width;
+    }
+
+    @include breakpoint(xlarge) {
+      right : map-get($gutter-sizes, xlarge) + $hero-arrow-width;
+    }
+
+    @include breakpoint(xxxlarge) {
+      right : calc((100vw - #{$global-width - map-get($gutter-sizes, xlarge)*2}) / 2 + #{$hero-arrow-width});
+    }
+  }
+
+  &-frame {
+    position         : fixed;
+    background-color : $body-background;
+    z-index          : 0;
+
+    &-right {
+      right : 0;
+    }
+
+    &-left, &-square {
+      left : 0;
+    }
+
+    &-square {
+      height : $hero-arrow-height/2;
+    }
+
+    &-right, &-left, &-square {
+      top   : 0;
+      width : 0;
+
+    }
+    &-right, &-left {
+      bottom    : 0;
+      max-width : map-get($gutter-sizes, small);
+
+      @include breakpoint(xlarge) {
+        max-width : map-get($gutter-sizes, xlarge);
+      }
+
+      @include breakpoint(xxxlarge) {
+        max-width : calc((100vw - #{$global-width - map-get($gutter-sizes, xlarge)*2}) / 2);
+      }
+    }
+  }
+}

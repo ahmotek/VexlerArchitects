@@ -1,0 +1,26 @@
+////
+/// @group grid
+////
+
+// Utility function for mixin column-gutters
+@mixin make-column-gutters($fs-gutters) {
+  padding-left  : $fs-gutters;
+  padding-right : $fs-gutters;
+}
+
+@mixin column-gutters($fs-map, $fs-breakpoints: $breakpoints) {
+  @each $fs-breakpoint, $fs-gutters in $fs-map {
+    @if $fs-breakpoint == null {
+      @include make-column-gutters($fs-gutters);
+    } @else {
+      // If $fs-gutters is a key that exists in
+      // $fs-breakpoints, use the value
+      @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+        $fs-breakpoint : map-get($fs-breakpoints, $fs-breakpoint);
+      }
+      @media screen and (min-width : $fs-breakpoint) {
+        @include make-column-gutters($fs-gutters);
+      }
+    }
+  }
+}

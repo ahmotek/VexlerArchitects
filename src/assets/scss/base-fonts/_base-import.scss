@@ -1,0 +1,11 @@
+// Imports all base content [normalize + fonts + foundation files]
+// 1st file on main.scss, just after the charset
+
+// 1. import fonts-import
+@import "fonts/fonts-import";
+
+// 2. import Third-party libraries
+@import '../../../../bower_components/foundation-sites/scss/vendor/normalize';
+
+
+

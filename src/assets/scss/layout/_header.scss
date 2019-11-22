@@ -1,0 +1,181 @@
+@import '../base-variables/settings';
+@import '../base-variables/custom-settings';
+@import '../base-variables/layout-sizes';
+@import '../base-variables/brandcolors';
+
+.header {
+  position         : fixed;
+  top              : 0;
+  width            : 100%;
+  height           : map-get($header-height, small);
+  padding-top      : map-get($header-padding, small);
+  padding-bottom   : map-get($header-padding, small);
+  background-color : $body-background;
+  z-index          : 99;
+
+  &:after {
+    content          : ' ';
+    position         : absolute;
+    top              : 0;
+    left             : 0;
+    width            : 100%;
+    height           : map-get($header-height, small);
+    background-color : $white;
+
+    @include breakpoint(medium) {
+      display : none;
+    }
+  }
+
+  @include breakpoint(xlarge) {
+    height         : map-get($header-height, xlarge);
+    padding-top    : map-get($header-padding, xlarge);
+    padding-bottom : map-get($header-padding, xlarge);
+  }
+
+  &-home-link {
+    position : relative;
+    display  : inline-block;
+    height   : calc(100% + 8px);
+    margin   : rem-calc(-4) rem-calc(-4) 0 0;
+    padding  : rem-calc(4);
+    z-index  : 1;
+  }
+
+  &-navigation {
+    flex-grow : 2;
+    height    : map-get($header-inner-height, small);
+  }
+
+  & ::-moz-selection {
+    background : transparent;
+  }
+
+  & ::selection {
+    background : transparent;
+  }
+}
+
+/*.trigger-navigation {
+  position    : relative;
+  float       : left;
+  display     : inline-block;
+  width       : map-get($header-inner-height, small);
+  height      : map-get($header-inner-height, small);
+  margin-left : rem-calc(-8);
+  padding     : rem-calc(8);
+  font-size   : rem-calc(32);
+  z-index     : 1;
+
+  .icon {
+    position : relative;
+    top      : rem-calc(-2);
+
+    &-open {
+      .nav-open & {
+        display : none;
+      }
+    }
+
+    &-close {
+      display : none;
+
+      .nav-open & {
+        display : inline-block;
+        left    : rem-calc(-6);
+      }
+    }
+  }
+
+  @include breakpoint(medium) {
+    display : none;
+  }
+}*/
+
+.trigger-navigation {
+  position           : relative;
+  float              : left;
+  display            : inline-block;
+  width              : map-get($header-inner-height, small) - $global-padding/2;
+  height             : map-get($header-inner-height, small) + rem-calc(1);
+  margin-left        : -$global-padding/2;
+  padding            : $global-padding $global-padding/2;
+  -webkit-transform  : rotate(0deg);
+  -moz-transform     : rotate(0deg);
+  -o-transform       : rotate(0deg);
+  transform          : rotate(0deg);
+  -webkit-transition : .5s ease-in-out;
+  -moz-transition    : .5s ease-in-out;
+  -o-transition      : .5s ease-in-out;
+  transition         : .5s ease-in-out;
+  z-index            : 1;
+  cursor             : pointer;
+
+  @include breakpoint(medium) {
+    display : none;
+  }
+
+  span {
+    position           : absolute;
+    display            : block;
+    left               : $global-padding/2;
+    right              : $global-padding/2;
+    height             : 2px;
+    background         : $primary-color;
+    border-radius      : 2px;
+    opacity            : 1;
+    -webkit-transform  : rotate(0deg);
+    -moz-transform     : rotate(0deg);
+    -o-transform       : rotate(0deg);
+    transform          : rotate(0deg);
+    -webkit-transition : .25s ease-in-out;
+    -moz-transition    : .25s ease-in-out;
+    -o-transition      : .25s ease-in-out;
+    transition         : .25s ease-in-out;
+  }
+}
+
+.top-bar {
+  top                      : $global-padding;
+  -webkit-transform-origin : left center;
+  -moz-transform-origin    : left center;
+  -o-transform-origin      : left center;
+  transform-origin         : left center;
+
+  .nav-open & {
+    -webkit-transform : rotate(45deg);
+    -moz-transform    : rotate(45deg);
+    -o-transform      : rotate(45deg);
+    transform         : rotate(45deg);
+    top               : $global-padding - rem-calc(1);
+  }
+}
+
+.middle-bar {
+  top                      : calc(50% - 1px);
+  -webkit-transform-origin : left center;
+  -moz-transform-origin    : left center;
+  -o-transform-origin      : left center;
+  transform-origin         : left center;
+
+  .nav-open & {
+    width   : 0;
+    opacity : 0;
+  }
+}
+
+.bottom-bar {
+  bottom                   : $global-padding;
+  -webkit-transform-origin : left center;
+  -moz-transform-origin    : left center;
+  -o-transform-origin      : left center;
+  transform-origin         : left center;
+
+  .nav-open & {
+    -webkit-transform : rotate(-45deg);
+    -moz-transform    : rotate(-45deg);
+    -o-transform      : rotate(-45deg);
+    transform         : rotate(-45deg);
+    bottom            : $global-padding - rem-calc(2);
+  }
+}

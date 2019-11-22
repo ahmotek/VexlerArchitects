@@ -1,0 +1,26 @@
+//  Custom Settings
+//  -----------------------------
+//
+//  Table of Contents:
+//
+//   1. Global
+//   2. Base Typography
+//   3.
+//   4. Transitions
+
+// 1. Global
+// ---------
+$base-img-path: '../img/';
+
+// 2. Base Typography
+// ------------------
+//$anchor-color-hover : $primary-color;    
+                                       
+// 3.
+// ------------------
+
+// 4. Transitions
+// --------------
+$ease : ease-in-out;
+$time-and-ease: 150ms $ease;
+$anchor-color-transition : color $time-and-ease;

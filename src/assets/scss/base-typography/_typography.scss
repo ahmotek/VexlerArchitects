@@ -1,0 +1,18 @@
+@import '../base-variables/settings';
+
+// Base typography styles (tags only)
+@import 'mixins/base-mixins';
+
+// Typography helper classes (classes only)
+@import 'mixins/helpers-mixins';
+
+// Text alignment classes
+@import 'mixins/alignment-mixins';
+
+// Print styles
+@import 'mixins/print-mixins';
+
+@include typography-base;
+@include typography-helpers;
+@include text-alignment;
+@include print-styles;

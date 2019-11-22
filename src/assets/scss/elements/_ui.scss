@@ -1,0 +1,50 @@
+@import '../base-variables/settings';
+@import '../base-variables/custom-settings';
+@import '../base-variables/layout-sizes';
+@import '../base-variables/brandcolors';
+
+.icon {
+  // i-about is same icon as i-android-menu
+  &-about {
+    clip-path : polygon(0 0, 30px 0, 30px 15px, 15px 15px, 15px 30px, 0 30px);
+  }
+}
+
+.arrow-down-ui {
+  position         : absolute;
+  bottom           : rem-calc(0);
+  right            : map-get($gutter-sizes, small);
+  width            : 2*($hero-arrow-width/3);
+  height           : 2*($hero-arrow-height/3);
+  padding-top      : rem-calc(16);
+  text-align       : center;
+  background-color : $body-background;
+  border-right     : 1px solid $body-background;
+  z-index          : 2;
+
+  @include breakpoint(medium-small) {
+    width       : $hero-arrow-width;
+    height      : $hero-arrow-height;
+    padding-top : rem-calc(22);
+  }
+
+  @include breakpoint(xlarge) {
+    right : map-get($gutter-sizes, xlarge);
+  }
+
+  @include breakpoint(xxxlarge) {
+    right : calc((100vw - #{$global-width - map-get($gutter-sizes, xlarge)*2}) / 2);
+  }
+
+  .icon {
+    font-size : rem-calc(20);
+
+    @include breakpoint(medium-small) {
+      font-size : rem-calc(30);
+    }
+  }
+
+  .portrait & {
+    bottom : calc(10vh + #{$ipad-topbar/2});
+  }
+}

@@ -1,0 +1,58 @@
+//  Layout Sizes
+//  -----------------------------
+//
+//  Table of Contents:
+//
+//   1. Header
+//   2. Footer
+//   3. Content
+//   4. Devices
+
+// 1. Header
+// ---------
+$gutter-sizes : (
+  small: rem-calc(24),
+  xlarge: rem-calc(48),
+);
+
+$header-height : (
+  small : rem-calc(75),
+  xlarge : rem-calc(100),
+);
+
+$header-padding : (
+  small : rem-calc(15),
+  xlarge : rem-calc(24),
+);
+
+$header-inner-height : (
+  small : map-get($header-height, small) - map-get($header-padding, small) *2,
+  xlarge : map-get($header-height, xlarge) - map-get($header-padding, xlarge) *2,
+);
+
+$logotype-width : (
+  small : rem-calc(165),
+  xlarge : rem-calc(200),
+);
+
+$util-icon-size : (
+  small: rem-calc(25),
+  xlarge: rem-calc(30),
+);
+
+// 2. Footer
+// ---------
+
+// 3. Content
+// ----------
+$aside-width : (
+  small : auto,
+  medium : rem-calc(320),
+);
+
+$hero-arrow-width : rem-calc(80);
+$hero-arrow-height : rem-calc(70);
+
+// 4. Devices
+// ----------
+$ipad-topbar : rem-calc(57);

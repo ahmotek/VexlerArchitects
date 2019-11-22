@@ -1,0 +1,75 @@
+<header class="header">
+  <div class="container">
+    <h1 class="header-title">
+      <a href="{{root}}index.html" title="וקסלר אדריכלים" class="header-home-link">{{> svg-logotype}}</a>
+      <span class="seo-text">וקסלר אדריכלים</span>
+    </h1>
+
+    <nav class="header-navigation">
+      <div data-trigger-nav="data-trigger-nav" class="trigger-navigation">
+        <!--<i class="icon icon-open i-android-menu"></i>
+        <i class="icon icon-close i-ios-close-empty"></i>-->
+        <span class="top-bar"></span>
+        <span class="middle-bar"></span>
+        <span class="bottom-bar"></span>
+      </div>
+      <div class="util-icons-background"></div>
+
+      <ul class="navigation-list navigation-list-right">
+        <li class="navigation-list-item">
+          {{#unlesspage 'projects-list'}}
+          <a href="{{root}}projects-list.html" title="וקסלר אדריכלים פרוייקטים" class="link-navigation-list">
+            <i class="icon i-android-apps"></i><span>פרוייקטים</span>
+          </a>
+          {{/unlesspage}}
+
+          {{#ifpage 'projects-list'}}
+          <a href="{{root}}projects-list.html" title="וקסלר אדריכלים פרוייקטים" class="link-navigation-list selected">
+            <i class="icon i-android-apps"></i><span>פרוייקטים</span>
+          </a>
+          {{/ifpage}}
+
+        </li>
+        <li class="navigation-list-item">
+          {{#unlesspage 'about'}}
+          <a href="{{root}}about.html" title="וקסלר אדריכלים פרופיל משרד" class="link-navigation-list">
+            <i class="icon i-android-menu icon-about"></i><span>אודות</span>
+          </a>
+          {{/unlesspage}}
+
+          {{#ifpage 'about'}}
+          <a href="{{root}}about.html" title="וקסלר אדריכלים פרופיל משרד" class="link-navigation-list selected">
+            <i class="icon i-android-menu icon-about"></i><span>אודות</span>
+          </a>
+          {{/ifpage}}
+        </li>
+        <li class="navigation-list-item">
+          {{#unlesspage 'testimonials'}}
+          <a href="{{root}}testimonials.html" title="וקסלר אדריכלים המלצות" class="link-navigation-list">
+            <i class="icon i-certificate"></i><span>המלצות</span>
+          </a>
+          {{/unlesspage}}
+
+          {{#ifpage 'testimonials'}}
+          <a href="{{root}}testimonials.html" title="וקסלר אדריכלים המלצות" class="link-navigation-list selected">
+            <i class="icon i-certificate"></i><span>המלצות</span>
+          </a>
+          {{/ifpage}}
+        </li>
+      </ul>
+
+      <ul class="navigation-list navigation-list-left">
+        <li class="navigation-list-item">
+          <a href="mailto:michal@vexlerarchitects.com?subject=שלום%20מיכל!%20ראיתי%20את%20האתר%20שלך" class="link-navigation-list email-ui">
+            <i class="icon i-ios-email"></i><span dir="ltr">michal@vexlerarchitects.com</span>
+          </a>
+        </li>
+        <li class="navigation-list-item">
+          <a href="tel:+9720522807624" title="צור קשר וקסלר אדריכלים" class="link-navigation-list phone-ui">
+            <i class="icon i-ios-telephone"></i><span dir="ltr">052·2807624</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>

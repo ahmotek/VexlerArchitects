@@ -1,0 +1,77 @@
+@import '../base-variables/settings';
+@import '../base-variables/custom-settings';
+@import '../base-variables/layout-sizes';
+@import '../base-variables/brandcolors';
+
+.hero-image {
+  position  : absolute;
+  width     : 100%;
+  min-width : calc(100vw - #{map-get($gutter-sizes, small) *2});
+  max-width : none;
+  height    : auto;
+  left      : 50%;
+  transform : translateX(-50%);
+
+  @include breakpoint(xlarge) {
+    min-width : calc(100vw - #{map-get($gutter-sizes, xlarge) *2});
+  }
+
+  @include breakpoint(xxxlarge) {
+    min-width : calc(#{$global-width - map-get($gutter-sizes, xlarge) *2});
+  }
+
+  .portrait & {
+    width : auto;
+  }
+
+  .landscape & {
+    height : auto;
+  }
+}
+
+img {
+  .content-wrapper > & {
+    position      : relative;
+    width         : calc(100% + #{map-get($gutter-sizes, xlarge)});
+    max-width     : none;
+    margin-right  : - map-get($gutter-sizes, xlarge) /2;
+    margin-bottom : $global-margin*1.5;
+
+    @include breakpoint(large) {
+      margin : $global-margin (- map-get($gutter-sizes, xlarge) /2) $global-margin*2;
+    }
+  }
+
+  .project-grid-item & {
+    width : 100%;
+
+    & + img {
+      margin-top : $global-margin;
+    }
+  }
+}
+
+.image-wrapper {
+  overflow    : hidden;
+  display     : block;
+  position    : relative;
+  padding-top : 40%;
+
+  /*@include breakpoint(medium) {
+    padding-top : 56.25%;
+  }*/
+
+  img {
+    position         : absolute;
+    top              : 50%;
+    left             : 50%;
+    min-width        : 100%;
+    min-height       : 100%;
+    background-color : transparentize($secondary-color, .85);
+    transform        : translate(-50%, -50%);
+  }
+
+  & + a {
+    margin-top : $global-margin;
+  }
+}

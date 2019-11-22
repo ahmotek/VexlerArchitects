@@ -1,19 +1,65 @@
 {{!-- This is the base layout for your project, and will be used on every page. --}}
 
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" dir="rtl" lang="he" prefix='og: http://ogp.me/ns#'>
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation for Sites</title>
+    
+    {{!-- General Meta --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>{{ title }}</title>
+    <link rel="canonical" href="{{ canonicalURL }}">
+    <meta name="description" content="{{ description }}">
+
+    {{!-- Facebook Meta --}}
+    <meta property="og:url" content="{{ canonicalURL }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:image" content="{{ imageURL }}">
+    <meta property="og:description" content="{{ description }}">
+
+    {{!-- Twitter Meta --}}
+    <meta name="twitter:card" content="{{ title }}">
+    <meta name="twitter:url" content="{{ canonicalURL }}">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image:src" content="{{ imageURL }}">
+    <meta name="twitter:image:alt" content="{{ title }}">
+
+    {{!-- load ICOs' --}}
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="{{root}}assets/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="{{root}}assets/img/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="{{root}}assets/img/favicon/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="{{root}}assets/img/favicon/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="{{root}}assets/img/favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="{{root}}assets/img/favicon/manifest.json">
+    <link rel="mask-icon" href="{{root}}assets/img/favicon/safari-pinned-tab.svg" color="#4e4240">
+    <link rel="shortcut icon" href="{{root}}assets/img/favicon/favicon.ico">
+    <meta name="msapplication-config" content="{{root}}assets/img/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#4e4240">
+
+    {{!-- load CSS file --}}
     <link rel="stylesheet" href="{{root}}assets/css/app.css">
   </head>
   <body>
 
+    {{> header}}
+
     {{!-- Pages you create in the src/pages/ folder are inserted here when the flattened page is created. --}}
-    {{> body}}
+    <main class="main antialiased">
+      {{> body}}
+    </main>
+
+    {{> footer}}
 
     <script src="{{root}}assets/js/app.js"></script>
+    <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    
+    {{> analytics}}
+    
   </body>
 </html>

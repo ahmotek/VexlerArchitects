@@ -1,0 +1,32 @@
+@import '../base-variables/settings';
+@import '../base-variables/custom-settings';
+@import '../base-variables/layout-sizes';
+@import '../base-variables/brandcolors';
+
+.button {
+  &-primary {
+    display          : inline-block;
+    padding          : rem-calc(5) $global-padding;
+    background-color : $secondary-color;
+    color            : $white;
+    font-size        : rem-calc(14);
+    font-weight      : $global-weight-normal;
+    line-height      : 1.6;
+    transition       : background $time-and-ease;
+
+    &:hover, &:focus {
+      background-color : scale-color($secondary-color, $lightness : -15%);
+      color            : $white;
+    }
+
+    &:focus {
+      outline : none;
+    }
+  }
+
+  &-expanded {
+    width         : 100%;
+    padding-right : 0;
+    padding-left  : 0;
+  }
+}

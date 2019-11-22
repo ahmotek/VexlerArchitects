@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family : "vexlerarchitects";
+  src         : url("../fonts/VA-icon-font/vexlerarchitects.eot");
+  src         : url("../fonts/VA-icon-font/vexlerarchitects.eot?#iefix") format("embedded-opentype"),
+  url("../fonts/VA-icon-font/vexlerarchitects.woff") format("woff"),
+  url("../fonts/VA-icon-font/vexlerarchitects.ttf") format("truetype"),
+  url("../fonts/VA-icon-font/vexlerarchitects.svg#vexlerarchitects") format("svg");
+  font-weight : normal;
+  font-style  : normal;
+
+}
+
+[data-icon]:before {
+  content : attr(data-icon);
+}
+
+[data-icon]:before,
+[class^="i-"]:before,
+[class*=" i-"]:before {
+  font-family             : "vexlerarchitects" !important;
+  font-style              : normal !important;
+  font-weight             : normal !important;
+  font-variant            : normal !important;
+  text-transform          : none !important;
+  speak                   : none;
+  line-height             : 1;
+  -webkit-font-smoothing  : antialiased;
+  -moz-osx-font-smoothing : grayscale;
+}
+
+.i-android-apps:before {
+  content : "\62";
+}
+
+.i-android-menu:before {
+  content : "\64";
+}
+
+.i-ios-close-empty:before {
+  content : "\65";
+}
+
+.i-ios-telephone:before {
+  content : "\68";
+}
+
+.i-ios-arrow-down:before {
+  content : "\6a";
+}
+
+.i-social-facebook:before {
+  content : "\6c";
+}
+
+.i-social-pinterest:before {
+  content : "\6d";
+}
+
+.i-social-instagram:before {
+  content : "\6e";
+}
+
+.i-social-twitter:before {
+  content : "\6f";
+}
+
+.i-social-linkedin:before {
+  content : "\70";
+}
+
+.i-certificate:before {
+  content : "\71";
+}
+
+.i-star:before {
+  content : "\72";
+}
+
+.i-ios-email:before {
+  content : "\61";
+}

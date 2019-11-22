@@ -8,7 +8,8 @@ var sequence = require('run-sequence');
 var sherpa   = require('style-sherpa');
 
 // Check for --production flag
-var isProduction = !!(argv.production);
+// var isProduction = !!(argv.production);
+var isProduction = true;
 
 // Port to use for the development server.
 var PORT = 8000;
@@ -28,29 +29,32 @@ var PATHS = {
   ],
   javascript: [
     'bower_components/jquery/dist/jquery.js',
-    'bower_components/what-input/what-input.js',
-    'bower_components/foundation-sites/js/foundation.core.js',
-    'bower_components/foundation-sites/js/foundation.util.*.js',
+    'bower_components/modernizr/modernizr.js',
+    'bower_components/jquery_lazyload/jquery.lazyload.js',
+    'bower_components/sticky-kit/jquery.sticky-kit.js',
+    // 'bower_components/what-input/what-input.js',
+    // 'bower_components/foundation-sites/js/foundation.core.js',
+    // 'bower_components/foundation-sites/js/foundation.util.*.js',
     // Paths to individual JS components defined below
-    'bower_components/foundation-sites/js/foundation.abide.js',
-    'bower_components/foundation-sites/js/foundation.accordion.js',
-    'bower_components/foundation-sites/js/foundation.accordionMenu.js',
-    'bower_components/foundation-sites/js/foundation.drilldown.js',
-    'bower_components/foundation-sites/js/foundation.dropdown.js',
-    'bower_components/foundation-sites/js/foundation.dropdownMenu.js',
-    'bower_components/foundation-sites/js/foundation.equalizer.js',
-    'bower_components/foundation-sites/js/foundation.interchange.js',
-    'bower_components/foundation-sites/js/foundation.magellan.js',
-    'bower_components/foundation-sites/js/foundation.offcanvas.js',
-    'bower_components/foundation-sites/js/foundation.orbit.js',
-    'bower_components/foundation-sites/js/foundation.responsiveMenu.js',
-    'bower_components/foundation-sites/js/foundation.responsiveToggle.js',
-    'bower_components/foundation-sites/js/foundation.reveal.js',
-    'bower_components/foundation-sites/js/foundation.slider.js',
-    'bower_components/foundation-sites/js/foundation.sticky.js',
-    'bower_components/foundation-sites/js/foundation.tabs.js',
-    'bower_components/foundation-sites/js/foundation.toggler.js',
-    'bower_components/foundation-sites/js/foundation.tooltip.js',
+    // 'bower_components/foundation-sites/js/foundation.abide.js',
+    // 'bower_components/foundation-sites/js/foundation.accordion.js',
+    // 'bower_components/foundation-sites/js/foundation.accordionMenu.js',
+    // 'bower_components/foundation-sites/js/foundation.drilldown.js',
+    // 'bower_components/foundation-sites/js/foundation.dropdown.js',
+    // 'bower_components/foundation-sites/js/foundation.dropdownMenu.js',
+    // 'bower_components/foundation-sites/js/foundation.equalizer.js',
+    // 'bower_components/foundation-sites/js/foundation.interchange.js',
+    // 'bower_components/foundation-sites/js/foundation.magellan.js',
+    // 'bower_components/foundation-sites/js/foundation.offcanvas.js',
+    // 'bower_components/foundation-sites/js/foundation.orbit.js',
+    // 'bower_components/foundation-sites/js/foundation.responsiveMenu.js',
+    // 'bower_components/foundation-sites/js/foundation.responsiveToggle.js',
+    // 'bower_components/foundation-sites/js/foundation.reveal.js',
+    // 'bower_components/foundation-sites/js/foundation.slider.js',
+    // 'bower_components/foundation-sites/js/foundation.sticky.js',
+    // 'bower_components/foundation-sites/js/foundation.tabs.js',
+    // 'bower_components/foundation-sites/js/foundation.toggler.js',
+    // 'bower_components/foundation-sites/js/foundation.tooltip.js',
     'src/assets/js/**/*.js',
     'src/assets/js/app.js'
   ]
@@ -88,23 +92,23 @@ gulp.task('pages:reset', function(cb) {
   cb();
 });
 
-gulp.task('styleguide', function(cb) {
-  sherpa('src/styleguide/index.md', {
-    output: 'dist/styleguide.html',
-    template: 'src/styleguide/template.html'
-  }, cb);
-});
+// gulp.task('styleguide', function(cb) {
+//   sherpa('src/styleguide/index.md', {
+//     output: 'dist/styleguide.html',
+//     template: 'src/styleguide/template.html'
+//   }, cb);
+// });
 
 // Compile Sass into CSS
 // In production, the CSS is compressed
 gulp.task('sass', function() {
-  var uncss = $.if(isProduction, $.uncss({
-    html: ['src/**/*.html'],
-    ignore: [
-      new RegExp('^meta\..*'),
-      new RegExp('^\.is-.*')
-    ]
-  }));
+  // var uncss = $.if(isProduction, $.uncss({
+  //   html: ['src/**/*.html'],
+  //   ignore: [
+  //     new RegExp('^meta\..*'),
+  //     new RegExp('^\.is-.*')
+  //   ]
+  // }));
 
   var minifycss = $.if(isProduction, $.minifyCss());
 
@@ -117,10 +121,16 @@ gulp.task('sass', function() {
     .pipe($.autoprefixer({
       browsers: COMPATIBILITY
     }))
-    .pipe(uncss)
+    // .pipe(uncss)
     .pipe(minifycss)
     .pipe($.if(!isProduction, $.sourcemaps.write()))
     .pipe(gulp.dest('dist/assets/css'));
+});
+
+// Copy fonts to the "dist" folder
+gulp.task('fonts', function() {
+  return gulp.src('src/assets/fonts/**/*')
+  .pipe(gulp.dest('dist/assets/fonts'))
 });
 
 // Combine JavaScript into one file
@@ -153,7 +163,8 @@ gulp.task('images', function() {
 
 // Build the "dist" folder by running all of the above tasks
 gulp.task('build', function(done) {
-  sequence('clean', ['pages', 'sass', 'javascript', 'images', 'copy'], 'styleguide', done);
+  // sequence('clean', ['pages', 'sass', 'javascript', 'images', 'copy'], 'styleguide', done);
+  sequence('clean', ['pages', 'sass', 'javascript', 'images', 'copy'], done);
 });
 
 // Start a server with LiveReload to preview the site in
@@ -171,5 +182,5 @@ gulp.task('default', ['build', 'server'], function() {
   gulp.watch(['src/assets/scss/**/*.scss'], ['sass', browser.reload]);
   gulp.watch(['src/assets/js/**/*.js'], ['javascript', browser.reload]);
   gulp.watch(['src/assets/img/**/*'], ['images', browser.reload]);
-  gulp.watch(['src/styleguide/**'], ['styleguide', browser.reload]);
+  // gulp.watch(['src/styleguide/**'], ['styleguide', browser.reload]);
 });

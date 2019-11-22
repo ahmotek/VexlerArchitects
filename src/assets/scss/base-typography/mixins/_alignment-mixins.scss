@@ -1,0 +1,17 @@
+@mixin text-alignment {
+  @each $align in (left, right, center, justify) {
+    .text-#{$align} {
+      text-align: $align;
+    }
+
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @if $size != 'small' {
+          .#{$size}-text-#{$align} {
+            text-align: $align;
+          }
+        }
+      }
+    }
+  }
+}

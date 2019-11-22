@@ -1,0 +1,19 @@
+@import '../base-variables/settings';
+@import '../base-variables/custom-settings';
+@import '../base-variables/layout-sizes';
+@import '../base-variables/brandcolors';
+
+@media print {
+  .header {
+    //position         : static;
+    //position         : initial;
+    //top              : 0;
+    //z-index          : 1;
+    //width            : 100%;
+    //height           : auto;
+    //padding          : 0;
+    //margin           : 0 0 $global-margin*1.5;
+    //background-color : transparent;
+    //box-shadow       : 0 0 0 rgba($body-background, 0);
+  }
+}

@@ -1,0 +1,20 @@
+@import '../base-variables/settings';
+@import '../base-variables/custom-settings';
+@import '../base-variables/layout-sizes';
+@import '../base-variables/brandcolors';
+
+.footer {
+  position         : relative;
+  width            : 100%;
+  padding-top      : $global-padding;
+  padding-bottom   : $global-padding;
+  background-color : $primary-color;
+
+  & ::-moz-selection {
+    background : transparent;
+  }
+
+  & ::selection {
+    background : transparent;
+  }
+}

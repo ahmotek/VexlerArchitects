@@ -1,0 +1,711 @@
+@import '../base-variables/settings';
+@import '../base-variables/custom-settings';
+@import '../base-variables/layout-sizes';
+@import '../base-variables/brandcolors';
+
+.header-title {
+  display : inline-block;
+
+  @include breakpoint(medium) {
+    margin-left : $global-margin;
+  }
+}
+
+.seo-text {
+  position    : absolute;
+  top         : rem-calc(-9999);
+  left        : rem-calc(-9999);
+  width       : rem-calc(1);
+  height      : rem-calc(1);
+  text-indent : rem-calc(-9999);
+}
+
+p {
+  font-size : 93.75%;
+
+  .about-page & {
+    @include breakpoint(large) {
+      font-size : 100%;
+    }
+
+    @include breakpoint(xlarge) {
+      font-size : 106.25%;
+    }
+  }
+
+  &:last-child {
+    .testimonials-page & {
+      margin-bottom : 0;
+    }
+  }
+}
+
+.sentence-quote {
+  font-size   : 4.65vw;
+  color       : $body-font-color;
+  white-space : nowrap;
+
+  @include breakpoint(small-small) {
+    font-size : rem-calc(22);
+
+    @include breakpoint(large) {
+      font-size : rem-calc(25);
+    }
+  }
+
+  @include breakpoint(landscape) {
+    font-size : 3.9vw;
+
+    @include breakpoint(medium-small) {
+      font-size : rem-calc(25);
+    }
+
+    @include breakpoint(large) {
+      font-size : rem-calc(28);
+    }
+  }
+}
+
+.author-quote {
+  float     : left;
+  font-size : 3.75vw;
+
+  @media screen and (min-width : rem-calc(426)) {
+    font-size : rem-calc(16);
+  }
+
+  @include breakpoint(landscape) {
+    font-size : 2.4vw;
+
+    @include breakpoint(medium-small) {
+      font-size : rem-calc(16);
+    }
+
+    @include breakpoint(large) {
+      font-size : rem-calc(18);
+    }
+  }
+}
+
+.icon,
+.icon + span {
+  display : inline-block;
+}
+
+.icon {
+  text-align : center;
+}
+
+.icon + span {
+  vertical-align : top;
+}
+
+.link {
+  &-navigation-list {
+    position    : relative;
+    display     : inline-block;
+    width       : 100%;
+    height      : 100%;
+    padding     : $global-padding/2 $global-padding;
+    color       : $white;
+    white-space : nowrap;
+
+    @include breakpoint(medium) {
+      color          : $body-font-color;
+      padding-top    : rem-calc(2);
+      padding-bottom : rem-calc(2);
+
+      &:after {
+        .navigation-list-right & {
+          content            : '';
+          position           : absolute;
+          left               : 50%;
+          bottom             : rem-calc(5);
+          right              : 50%;
+          width              : auto;
+          height             : rem-calc(1);
+          background-color   : $secondary-color;
+          z-index            : 1;
+          -webkit-transition : left 150ms ease-in-out, right 150ms ease-in-out;
+          -moz-transition    : left 150ms ease-in-out, right 150ms ease-in-out;
+          -ms-transition     : left 150ms ease-in-out, right 150ms ease-in-out;
+          -o-transition      : left 150ms ease-in-out, right 150ms ease-in-out;
+          transition         : left 150ms ease-in-out, right 150ms ease-in-out;
+        }
+      }
+
+      &:hover {
+        color : $body-font-color;
+
+        &:after {
+          .navigation-list-right & {
+            left  : $global-padding - rem-calc(2);
+            right : $global-padding - rem-calc(2);
+          }
+        }
+      }
+
+      &[href^="mailto:"] {
+        span {
+          display : none;
+        }
+      }
+    }
+
+    @include breakpoint(xlarge) {
+      font-size : rem-calc(18);
+    }
+
+    &.selected, &.selected:hover {
+      color  : $secondary-color;
+      cursor : default;
+
+      @include breakpoint(medium) {
+        &:after {
+          .navigation-list-right & {
+            content : none;
+          }
+        }
+      }
+    }
+
+    .icon {
+      float       : right;
+      width       : map-get($util-icon-size, small);
+      height      : map-get($util-icon-size, small);
+      margin-left : rem-calc(30);
+      font-size   : rem-calc(26);
+
+      &:before {
+        vertical-align : top;
+      }
+
+      @include breakpoint(medium) {
+        float : none;
+      }
+
+      @include breakpoint(xlarge) {
+        font-size : rem-calc(26);
+      }
+
+      .navigation-list-item:last-child & {
+
+        @include breakpoint(medium) {
+          float        : left;
+          margin-right : rem-calc(10);
+        }
+      }
+
+      .navigation-list-left & {
+        margin-left : rem-calc(10);
+
+        @include breakpoint(medium) {
+          margin-left : 0;
+          line-height : .8;
+        }
+      }
+
+      .navigation-list-right & {
+        @include breakpoint(medium) {
+          display : none;
+        }
+      }
+    }
+  }
+
+  //- Header and Footer
+  &-util-icons {
+    display        : block;
+    height         : 100%;
+    padding        : rem-calc(10) $global-padding;
+    color          : $white;
+    vertical-align : top;
+    white-space    : nowrap;
+
+    .header & {
+      @include breakpoint(medium-small) {
+        color   : $body-font-color;
+        padding : rem-calc(10);
+
+        &:hover {
+          color : $anchor-color-hover;
+        }
+
+        &:focus {
+          color : $anchor-color-focus;
+        }
+      }
+    }
+
+    .icon {
+      width         : map-get($util-icon-size, small);
+      height        : map-get($util-icon-size, small);
+      margin-left   : rem-calc(30);
+      margin-bottom : rem-calc(5);
+      font-size     : rem-calc(26);
+
+      .header & {
+        @include breakpoint(medium-small) {
+          margin : 0;
+        }
+      }
+    }
+
+    span {
+      padding-top    : rem-calc(2);
+      padding-bottom : rem-calc(3);
+      font-size      : rem-calc(16);
+
+      .header & {
+        @include breakpoint(medium) {
+          padding     : rem-calc(2) 0 0;
+          line-height : 1.6;
+        }
+      }
+    }
+
+    .util-icons-list-item:last-child & {
+      margin-bottom : $global-margin;
+      padding       : rem-calc(5) rem-calc(10);
+      border        : 1px solid transparentize($white, .8);
+
+      &:hover {
+        border : 1px solid transparentize($secondary-color, .8);
+      }
+
+      @include breakpoint(small-small) {
+        .header & {
+          display : inline-block;
+          width   : calc(40% - #{$global-padding/2});
+
+          &:first-of-type {
+            width       : calc(60% - #{$global-padding/2});
+            margin-left : $global-margin;
+          }
+        }
+      }
+
+      @include breakpoint(medium-small) {
+        display : inline-block;
+
+        .header & {
+          float         : left;
+          width         : auto;
+          margin-left   : $global-margin;
+          margin-bottom : 0;
+          padding       : rem-calc(10);
+          border        : 0 none;
+
+          &:first-of-type {
+            width  : auto;
+            margin : 0;
+          }
+        }
+
+        .footer & {
+          width         : 50%;
+          margin-bottom : 0;
+          padding-left  : rem-calc(15);
+        }
+      }
+
+      @include breakpoint(medium) {
+        .footer & {
+          width : auto;
+        }
+      }
+
+      .icon {
+        margin-left : rem-calc(10);
+
+        .header & {
+          @include breakpoint(medium-small) {
+            margin-left : 0;
+          }
+        }
+      }
+
+      &:last-of-type {
+        .footer & {
+          @include breakpoint(medium-small) {
+            width        : auto;
+            padding-left : rem-calc(10);
+          }
+        }
+
+        .icon {
+          .footer & {
+            margin-left : 0;
+          }
+        }
+      }
+    }
+
+    &:not(.phone-ui):not(.email-ui) {
+      .icon {
+        @include breakpoint(medium-small) {
+          .header & {
+            display : none;
+          }
+        }
+      }
+    }
+
+    &.email-ui {
+      span {
+        @include breakpoint(medium-small) {
+          .header & {
+            display : none;
+          }
+        }
+      }
+    }
+
+    &:not(:first-of-type) {
+      .header & {
+        .icon {
+          @include breakpoint(medium-small) {
+            margin-right : $global-margin;
+            float        : left;
+          }
+        }
+      }
+
+      .footer & {
+        display : inline-block;
+
+        &.phone-ui {
+          width : calc(100% - #{rem-calc(47 + 16)});
+
+          @include breakpoint(medium-small) {
+            width : calc(50% - #{rem-calc(47 + 16 + 16)});
+          }
+          @include breakpoint(medium) {
+            width : auto;
+          }
+        }
+
+        &:last-of-type {
+          margin-right : $global-margin;
+        }
+
+        @include breakpoint(medium-small) {
+          margin-right : $global-margin;
+        }
+      }
+    }
+  }
+
+  //- Projects page
+  &-share-button {
+    display     : block;
+    height      : rem-calc(32);
+    padding-top : rem-calc(3);
+    transition  : background $time-and-ease;
+    cursor      : pointer;
+
+    .icon {
+      width  : map-get($util-icon-size, small);
+      height : map-get($util-icon-size, small);
+    }
+  }
+
+  &-share-fb {
+    background-color : $bc-facebook;
+    color            : $white;
+
+    &:hover, &:focus {
+      background-color : scale-color($bc-facebook, $lightness : -15%);
+      color            : $white;
+    }
+  }
+
+  &-share-in {
+    background-color : $bc-linkedin;
+    color            : $white;
+
+    &:hover, &:focus {
+      background-color : scale-color($bc-linkedin, $lightness : -15%);
+      color            : $white;
+    }
+  }
+
+  &-share-tw {
+    background-color : $bc-twitter;
+    color            : $white;
+
+    &:hover, &:focus {
+      background-color : scale-color($bc-twitter, $lightness : -15%);
+      color            : $white;
+    }
+  }
+
+  &-share-pin {
+    background-color : $bc-pinterest;
+    color            : $white;
+
+    &:hover, &:focus {
+      background-color : scale-color($bc-pinterest, $lightness : -15%);
+      color            : $white;
+    }
+  }
+
+  &-navigation {
+    display            : block;
+    position           : relative;
+    padding            : rem-calc(10) rem-calc(14) $global-padding/2;
+    background-color   : $body-background;
+    border-top         : 1px solid $primary-color;
+    border-bottom      : 1px solid $primary-color;
+    -webkit-transition : all $time-and-ease;
+    -moz-transition    : all $time-and-ease;
+    -ms-transition     : all $time-and-ease;
+    -o-transition      : all $time-and-ease;
+    transition         : all $time-and-ease;
+    transition-delay   : 100ms;
+
+    &:before, &:after {
+      content            : '';
+      position           : absolute;
+      right              : 0;
+      width              : 0;
+      height             : rem-calc(1);
+      background         : $secondary-color;
+      -webkit-transition : width 400ms $ease;
+      -moz-transition    : width 400ms $ease;
+      -ms-transition     : width 400ms $ease;
+      -o-transition      : width 400ms $ease;
+      transition         : width 400ms $ease;
+    }
+
+    &:before {
+      top              : rem-calc(-1);
+      width            : 0;
+      transition-delay : 100ms;
+    }
+
+    &:after {
+      bottom : rem-calc(-1);
+      width  : 0;
+    }
+
+    &:hover {
+      border-top    : 1px solid $secondary-color;
+      border-bottom : 1px solid $secondary-color;
+
+      &:before, &:after {
+        width : 100%;
+      }
+    }
+
+    .content-wrapper & {
+      margin-bottom : $global-margin;
+
+      @include breakpoint(large) {
+        display : none;
+      }
+    }
+
+    .icon {
+      font-size   : rem-calc(16);
+      margin-left : $global-margin;
+
+      &:before {
+        position : relative;
+        top      : rem-calc(2);
+      }
+    }
+
+    span {
+      font-size : rem-calc(14);
+    }
+  }
+
+  //- Projects Menu
+  &-projects-item {
+    position : relative;
+    display  : block;
+  }
+}
+
+.projects-list-title {
+  margin-bottom : $global-margin;
+
+  @include breakpoint(large-up) {
+    margin-bottom : $global-margin*2;
+  }
+}
+
+.projects-title {
+  display          : block;
+  position         : relative;
+  top              : 0;
+  margin           : 0;
+  padding          : rem-calc(5) 0;
+  font-size        : rem-calc(18);
+  font-weight      : normal;
+  background-color : $body-background;
+  border-top       : 1px solid $primary-color;
+  border-bottom    : 1px solid $primary-color;
+  z-index          : 4;
+
+  @include breakpoint(medium-up) {
+    font-size : rem-calc(20);
+  }
+
+  @include breakpoint(xxlarge) {
+    font-size : rem-calc(24);
+  }
+
+  &.fixed {
+    position : fixed;
+    top      : map-get($header-height, small);
+    width    : calc(100vw - 2 * #{map-get($gutter-sizes, small)});
+    z-index  : 3;
+
+    @include breakpoint(xlarge) {
+      top   : map-get($header-height, xlarge);
+      width : calc(100vw - 2 * #{map-get($gutter-sizes, xlarge)});
+    }
+
+    @include breakpoint(xxxlarge) {
+      width : calc(#{$global-width - 2* map-get($gutter-sizes, xlarge)});
+    }
+
+    &.absolute {
+      position : absolute;
+    }
+  }
+}
+
+.project {
+  //- Projects-list typography
+  &-item {
+    &-title,
+    &-details-item {
+      @include breakpoint(large-up) {
+        color : $white;
+      }
+    }
+
+    &-title {
+      margin      : 0;
+      font-size   : rem-calc(16);
+      line-height : 1.2;
+
+      @include breakpoint(medium-up) {
+        font-size : rem-calc(17);
+      }
+
+      @include breakpoint(xlarge) {
+        font-size : rem-calc(18);
+      }
+
+      @include breakpoint(xxlarge) {
+        font-size : rem-calc(22);
+      }
+    }
+
+    &-details-item {
+      display     : block;
+      font-size   : rem-calc(14);
+      line-height : 1.6;
+
+      @include breakpoint(xlarge) {
+        font-size : rem-calc(15);
+      }
+    }
+  }
+
+  //- Project-page typography
+  &-title {
+    margin-bottom    : 0;
+    padding-top      : $global-padding;
+    padding-bottom   : $global-padding;
+    background-color : $body-background;
+    border-top       : 1px solid $primary-color;
+    font-size        : rem-calc(16);
+    line-height      : 1.2;
+
+    &.fixed {
+      position      : fixed;
+      top           : map-get($header-height, small);
+      width         : calc(100vw - 2 * #{map-get($gutter-sizes, small)});
+      border-bottom : 1px solid $primary-color;
+      z-index       : 6;
+
+      &.absolute {
+        position : absolute;
+      }
+    }
+
+    .testimonials-page & {
+      border-top  : 0 none;
+      padding-top : 0;
+    }
+
+    .about-page & {
+      border-top : 0 none;
+      font-size  : rem-calc(19);
+
+      @include breakpoint(large) {
+        font-size : rem-calc(21);
+      }
+      @include breakpoint(xlarge) {
+        font-size : rem-calc(27);
+      }
+    }
+
+    @include breakpoint(medium-up) {
+      font-size : rem-calc(17);
+    }
+
+    @include breakpoint(large) {
+      @media screen and (min-height : rem-calc(800)) {
+        font-size : rem-calc(18);
+      }
+
+      &.fixed {
+        position      : fixed;
+        top           : map-get($header-height, small);
+        width         : map-get($aside-width, medium);
+        border-bottom : 0;
+      }
+    }
+
+    @include breakpoint(xlarge) {
+      font-size : rem-calc(18);
+
+      &.fixed {
+        top : map-get($header-height, xlarge);
+      }
+    }
+
+    @include breakpoint(xxlarge) {
+      font-size : rem-calc(22);
+    }
+  }
+
+  &-details-item {
+    display     : block;
+    font-size   : rem-calc(14);
+    line-height : 1.6;
+
+    @include breakpoint(xlarge) {
+      font-size : rem-calc(15);
+    }
+  }
+}
+
+.copyright {
+  display    : block;
+  color      : transparentize($white, .6);
+  text-align : left;
+
+  @include breakpoint(medium) {
+    display        : inline-block;
+    float          : left;
+    padding-top    : #{map-get($gutter-sizes, small) + rem-calc(8)};
+    padding-bottom : #{map-get($gutter-sizes, small)};
+  }
+}
